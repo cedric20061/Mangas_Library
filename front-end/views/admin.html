@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Mangas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-6">Gestion des Mangas</h1>
+
+        <section class="mb-8">
+            <h2 class="text-2xl mb-4">Ajouter un Manga</h2>
+            <form id="add-manga-form" class="bg-white p-4 rounded-lg shadow">
+                <input type="text" id="name" placeholder="Nom du Manga" class="border p-2 w-full mb-4" required>
+                <input type="text" id="cover_image" placeholder="URL de l'image" class="border p-2 w-full mb-4" required>
+                <input type="number" id="chapter" placeholder="Nombre de Chapitres" class="border p-2 w-full mb-4" required>
+                <input type="number" id="note" placeholder="Note (0-10)" class="border p-2 w-full mb-4" required>
+                <textarea id="description" placeholder="Description" class="border p-2 w-full mb-4" required></textarea>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Ajouter</button>
+            </form>
+        </section>
+
+        <section>
+            <h2 class="text-2xl mb-4">Liste des Mangas</h2>
+            <div id="manga-list" class="bg-white rounded-lg shadow p-4">
+                <!-- Les mangas seront affichés ici -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const apiUrl = 'http://localhost:5000/mangas'; // Remplacez par l'URL de votre API
+
+        // Fonction pour afficher les mangas
+        async function fetchMangas() {
+            const response = await fetch(apiUrl);
+            const mangas = await response.json();
+            const mangaList = document.getElementById('manga-list');
+            mangaList.innerHTML = ''; // Efface le contenu précédent
+
+            mangas.forEach(manga => {
+                const mangaItem = document.createElement('div');
+                mangaItem.className = 'flex justify-between items-center mb-4 border-b pb-2';
+                mangaItem.innerHTML = `
+                    <div>
+                        <strong>${manga.name}</strong> - Chapitres: ${manga.chapter} - Note: ${manga.note} 
+                    </div>
+                    <div>
+                        <button onclick="editManga(${manga.id})" class="bg-yellow-500 text-white px-2 py-1 rounded mr-2">Modifier</button>
+                        <button onclick="deleteManga(${manga.id})" class="bg-red-500 text-white px-2 py-1 rounded">Supprimer</button>
+                    </div>
+                `;
+                mangaList.appendChild(mangaItem);
+            });
+        }
+
+        // Fonction pour ajouter un manga
+        document.getElementById('add-manga-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newManga = {
+                name: document.getElementById('name').value,
+                cover_image: document.getElementById('cover_image').value,
+                chapter: parseInt(document.getElementById('chapter').value),
+                note: parseFloat(document.getElementById('note').value),
+                description: document.getElementById('description').value
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newManga)
+            });
+
+            if (response.ok) {
+                fetchMangas(); // Rafraîchir la liste des mangas
+                document.getElementById('add-manga-form').reset(); // Réinitialiser le formulaire
+            } else {
+                console.error('Erreur lors de l\'ajout du manga.');
+            }
+        });
+
+        // Fonction pour supprimer un manga
+        async function deleteManga(id) {
+            const response = await fetch(`${apiUrl}/${id}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                fetchMangas(); // Rafraîchir la liste des mangas
+            } else {
+                console.error('Erreur lors de la suppression du manga.');
+            }
+        }
+
+        // Fonction pour modifier un manga
+        async function editManga(id) {
+            const response = await fetch(`${apiUrl}/${id}`);
+            const manga = await response.json();
+
+            // Remplir le formulaire avec les données du manga
+            document.getElementById('name').value = manga.name;
+            document.getElementById('cover_image').value = manga.cover_image;
+            document.getElementById('chapter').value = manga.chapter;
+            document.getElementById('note').value = manga.note;
+            document.getElementById('description').value = manga.description;
+
+            // Modifier le comportement du formulaire pour mettre à jour le manga
+            document.getElementById('add-manga-form').onsubmit = async (e) => {
+                e.preventDefault();
+                console.log('ert')
+                const updatedManga = {
+                    name: document.getElementById('name').value,
+                    cover_image: document.getElementById('cover_image').value,
+                    chapter: parseInt(document.getElementById('chapter').value),
+                    note: parseFloat(document.getElementById('note').value),
+                    description: document.getElementById('description').value
+                };
+
+                const updateResponse = await fetch(`${apiUrl}/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(updatedManga)
+                });
+
+                if (updateResponse.ok) {
+                    fetchMangas(); // Rafraîchir la liste des mangas
+                    document.getElementById('add-manga-form').reset(); // Réinitialiser le formulaire
+                } else {
+                    console.error('Erreur lors de la mise à jour du manga.');
+                }
+            };
+        }
+
+        // Charger les mangas au démarrage
+        fetchMangas();
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Document</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#102661",
+              start: "#391d9d",
+              middle: "#741cb6",
+              end: "#391888",
+              bodyStart: "#0d0b35",
+              bodyEnd: "#102661",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <header class="px-8 py-4 bg-gray-900 text-white">
+      <div class="flex justify-between items-center pb-2 border-b-2">
+        <div class="flex items-center gap-4">
+          <!-- Menu mobile button -->
+          <button
+            id="menu-btn"
+            aria-label="Open mobile menu"
+            class="focus:outline-none hover:text-pink-500"
+          >
+            <svg
+              class="w-8 h-8"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
+
+          <!-- Logo and title -->
+          <div class="flex items-center gap-4">
+            <img
+              class="h-16 w-16 rounded-full"
+              src="../public/img/logo.png"
+              alt="Logo JustToShowOf"
+            />
+            <h1 class="text-lg font-semibold">JustToShowOf</h1>
+          </div>
+        </div>
+
+        <!-- Search and User Icon -->
+        <div class="flex items-center gap-4">
+          <input
+            class="h-8 w-64 rounded-lg px-3 text-white bg-gray-500 focus:bg-white"
+            type="search"
+            name="search"
+            placeholder="Recherche"
+            id="search"
+          />
+
+          <div>
+            <i class="text-2xl fas fa-user" aria-label="User icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden bg-gray-800 text-white p-4 mt-2 rounded-lg"
+      >
+        <nav>
+          <ul class="flex flex-col gap-4">
+            <li>
+              <a class="cursor-pointer hover:text-pink-500" href="index.html"
+                >Accueil</a
+              >
+            </li>
+            <li>
+              <a
+                class="cursor-pointer hover:text-pink-500"
+                href="mangatheque.html"
+                >Mangathèque</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="px-8 py-4">
+      <h1 class="text-3xl text-white font-bold pb-4">Popular title</h1>
+      <div id="popular"></div>
+    </section>
+
+    <section class="px-8 py-4">
+      <h1 class="text-3xl font-bold mb-4">Latest Updates</h1>
+      <div class="flex justify-between">
+        <article>
+          <div
+            id="latest-Updates"
+            class="grid grid-cols-1 md:grid-cols-3 gap-4"
+          ></div>
+        </article>
+        <aside class="bg-gray-800 text-white p-4 rounded-lg w-96">
+          <h2 class="text-xl font-semibold mb-2">Popular Genres</h2>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-pink-500">Shonen</a></li>
+            <li><a href="#" class="hover:text-pink-500">Seinen</a></li>
+            <li><a href="#" class="hover:text-pink-500">Shojo</a></li>
+            <li><a href="#" class="hover:text-pink-500">Isekai</a></li>
+            <li><a href="#" class="hover:text-pink-500">Fantasy</a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="px-8 py-4">
+      <h1 class="text-3xl font-bold">Recently Added</h1>
+      <div id="recently-added" class="flex overflow-x-auto space-x-4 p-4"></div>
+    </section>
+
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+    <script src="../public/js/index.js"></script>
+  </body>
+</html>
