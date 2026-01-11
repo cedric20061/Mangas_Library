@@ -1,92 +1,132 @@
 # Manga Library Project
 
-This project is a web application built to help users learn the basics of SQLite through a manga library. Users can view a list of mangas, their summaries, and other relevant details. The project is developed using HTML and Tailwind CSS for the frontend, and Express.js with SQLite for the backend.
+Ce projet est une application web conçue pour aider les utilisateurs à apprendre les bases de **SQLite** à travers une bibliothèque de mangas. Les utilisateurs peuvent consulter la liste des mangas, leurs résumés et autres informations pertinentes.  
+Le projet utilise **HTML et Tailwind CSS** pour le frontend, et **Express.js avec SQLite** pour le backend.
 
-## Features
+---
 
-- Display a list of mangas.
-- View summaries and detailed information about each manga.
-- Learn how to use SQLite in a practical project setup.
+## 🚀 Fonctionnalités
 
-## Project Structure
+- Afficher une liste de mangas.
+- Voir le résumé et les détails de chaque manga.
+- Apprendre à utiliser SQLite dans un projet pratique.
 
-The project is divided into two main directories:
+---
 
-1. **front-end**: Contains the HTML and Tailwind CSS code.
-2. **back-end**: Contains the Express.js application and SQLite database management.
+## 🗂️ Structure du projet
 
-## Prerequisites
+Le projet est divisé en deux dossiers principaux :
 
-- Node.js (v14 or later)
-- npm or yarn
+1. **frontend** : contient le code HTML et Tailwind CSS.
+2. **backend** : contient l’application Express.js et la gestion de la base de données SQLite.
+
+---
+
+## ⚙️ Prérequis
+
+- Node.js (v14 ou supérieur)
+- npm ou yarn
 - SQLite
 
-## Getting Started
+---
 
-### Installation
+## 🛠️ Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/cedric20061/Mangas_Library
-   ```
+1. Cloner le dépôt :
 
-2. Navigate to the project directory:
-   ```bash
-   cd Mangas_Library
-   ```
+```bash
+git clone https://github.com/cedric20061/Mangas_Library
+````
 
-3. Set up the backend:
-   ```bash
-   cd back_end
-   npm install
-   ```
+2. Se rendre dans le dossier du projet :
 
-4. Set up the .env:
-   Change the file .env.exemple to .env and set the PORT for your application
+```bash
+cd Mangas_Library
+```
 
-### Running the Project
+3. Installer le backend :
 
-1. Start the backend server:
-   ```bash
-   cd backend
-   nodemon
-   ```
-   The server will run on `http://localhost:5000` by default.
+```bash
+cd backend
+npm install
+```
 
-2. Open the frontend:
-   - Simply open the HTML files in a browser.
+4. Configurer le fichier `.env` :
 
-### Example Usage
+* Renommer `.env.exemple` en `.env`
+* Définir le `PORT` pour l’application
 
-1. Open the application in your browser.
-2. Browse the list of mangas.
-3. Fly over a manga to view its summary and details.
+---
 
-## File Structure
+## ▶️ Lancer le projet
+
+1. Démarrer le serveur backend :
+
+```bash
+cd backend
+nodemon
+```
+
+Le serveur tourne par défaut sur `http://localhost:5000`.
+
+2. Ouvrir le frontend :
+
+* Ouvrir directement les fichiers HTML dans un navigateur.
+
+---
+
+## 🖼️ Aperçu de l’application
+
+### 📚 Liste des mangas
+
+![Liste des mangas](frontend/assets/preview-4.png)
+
+<!-- ### 📖 Détails & résumé d’un manga -->
+
+<!-- [Détails manga](frontend/assets/preview-2.png) -->
+
+### 🎨 Accueil (Tailwind CSS)
+
+![UI preview](front-end/assets/preview-1.png)
+![UI preview1](front-end/assets/preview-2.png)
+![UI preview2](front-end/assets/preview-3.png)
+
+
+---
+
+## 📂 Structure des fichiers
 
 ```
 ├── frontend
 │   ├── index.html
 │   ├── styles.css
-│   └── ...
+│   └── assets/
+│       ├── preview-home.png
+│       ├── preview-details.png
+│       └── preview-ui.png
 ├── backend
 │   ├── main.js
-│   ├── database
+│   ├── database/
 │   └── ...
 ```
 
-## Future Improvements
+---
 
-- Enable user authentication for personalized experiences.
-- Expand the manga details to include ratings and reviews.
-- Implement a search and filter feature.
+## 🔮 Améliorations futures
 
-## License
+* Ajouter l’authentification des utilisateurs pour une expérience personnalisée.
+* Étendre les détails des mangas avec les notes et avis.
+* Ajouter une fonctionnalité de recherche et de filtrage.
 
-This project is licensed under the [MIT License](LICENSE).
+---
 
-## Acknowledgments
+## 📜 License
 
-- Thanks to the creators of Express.js, SQLite, and Tailwind CSS for their amazing tools.
-- Inspired by various online manga libraries and tutorials.
+Ce projet est sous licence [MIT License](LICENSE).
 
+---
+
+## 🙏 Remerciements
+
+* Merci aux créateurs de **Express.js**, **SQLite** et **Tailwind CSS** pour leurs outils incroyables.
+* Inspiré par diverses bibliothèques de mangas en ligne et tutoriels.
