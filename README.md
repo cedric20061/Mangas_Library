@@ -79,7 +79,7 @@ Le serveur tourne par défaut sur `http://localhost:5000`.
 
 ### 📚 Liste des mangas
 
-![Liste des mangas](frontend/assets/preview-4.png)
+![Liste des mangas](frontend/public/assets/preview-4.png)
 
 <!-- ### 📖 Détails & résumé d’un manga -->
 
@@ -87,9 +87,9 @@ Le serveur tourne par défaut sur `http://localhost:5000`.
 
 ### 🎨 Accueil (Tailwind CSS)
 
-![UI preview](front-end/assets/preview-1.png)
-![UI preview1](front-end/assets/preview-2.png)
-![UI preview2](front-end/assets/preview-3.png)
+![UI preview](front-end/public/assets/preview-1.png)
+![UI preview1](front-end/public/assets/preview-2.png)
+![UI preview2](front-end/public/assets/preview-3.png)
 
 
 ---
