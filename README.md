@@ -79,7 +79,7 @@ Le serveur tourne par défaut sur `http://localhost:5000`.
 
 ### 📚 Liste des mangas
 
-![Liste des mangas](frontend/public/assets/preview-4.png)
+![Liste des mangas](front-end/public/assets/preview-4.png)
 
 <!-- ### 📖 Détails & résumé d’un manga -->
 
